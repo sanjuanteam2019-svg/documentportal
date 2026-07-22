@@ -58,5 +58,26 @@
     "status":"Approved",
     "date":"2025-11-18",
     "link":"https://drive.google.com/file/d/1k3QTtapohUhzZElfb_pngoIvP4waRW1W/view?usp=sharing"
+  },
+  {
+    "docNo":"SC3-CVI-007",
+    "category":"CVI",
+    "trade":"N/A",
+    "title":"SDO-BAC Office",
+    "revision":"00",
+    "status":"Approved",
+    "date":"2025-11-18",
+    "link":"https://drive.google.com/file/d/1kUgo2xmfx6UL-bYciUKOgW-o3SaOP0yt/view?usp=sharing"
+  },
+  {
+    "docNo":"SC3-CVI-008",
+    "category":"CVI",
+    "trade":"N/A",
+    "title":"Estrada Building",
+    "revision":"00",
+    "status":"Approved",
+    "date":"2025-11-18",
+    "link":"https://drive.google.com/file/d/1I4fcYkgAVQ2caW44fR0HzLXBLyZG1gbi/view?usp=sharing"
   }
+  
 ]
