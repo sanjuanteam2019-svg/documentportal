@@ -95,6 +95,11 @@ td:nth-child(8){
     font-weight:bold;
 }
 
+.status-superseded{
+    color:#d97706;
+    font-weight:bold;
+}
+
 .status-draft{
     color:#6b7280;
     font-weight:bold;
