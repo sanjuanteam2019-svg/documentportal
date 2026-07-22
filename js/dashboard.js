@@ -1,9 +1,10 @@
 const projectFiles = [
     "data/22-storey-multipurpose-building.json",
-    "data/School-Cluster2.json",
-    "data/Medical-Center.json",
-    "data/Government-Center.json",
-    "data/Evacuation-Center.json"
+    "data/school-cluster3.json",
+    "data/medical-center.json",
+    "data/government-center.json",
+    "data/evacuation-center.json",
+    "data/crematorium.json"
 ];
 
 async function loadDashboard() {
