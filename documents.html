@@ -201,7 +201,10 @@ function updateChart(){
         documents.filter(d=>d.status==="Approved").length;
 
     const approvedAsCorrected =
-        documents.filter(d=>d.status==="Approved As Corrected").length;
+        documents.filter(d=>d.status==="approved-as-corrected").length;
+
+    const reviseResubmit =
+        documents.filter(d=>d.status==="revise-resubmit").length;
 
     const submitted =
         documents.filter(d=>d.status==="Submitted").length;
@@ -230,7 +233,7 @@ function updateChart(){
             labels:[
                 "Approved",
                 "Approved As Corrected",
-                "reviseResubmit",
+                "Revise & Resubmit",
                 "Submitted",
                 "Draft",
                 "Superseded"
