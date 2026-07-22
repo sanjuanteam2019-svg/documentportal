@@ -1,42 +1,42 @@
 [
   {
-    "docNo":"DVX-2025-MPSJ-DPWH-RFA-AR-048",
-    "category":"RFA",
-    "trade":"Architectural",
+    "docNo":"DVX-DOH-L-001",
+    "category":"LETTER",
+    "trade":"N/A",
     "title":"Mock up Unit Reflected Ceilling Plan (RCP)",
     "revision":"00",
-    "status":"Revise & Resubmit",
-    "date":"2025-07-15",
+    "status":"Superseded",
+    "date":"2025-05-22",
     "link":"https://drive.google.com/file/d/1beQUTKE9bSD6yi22EkB4QQZJYCDjjcxB/view?usp=sharing"
   },
   {
-    "docNo":"DVX-GC-RFI-002",
-    "category":"RFI",
-    "trade":"Plumbing",
-    "title":"Roof Drain Inquiry",
-    "revision":"01",
-    "status":"Submitted",
-    "date":"2026-07-13",
-    "link":"#"
-  },
-  {
-    "docNo":"DVX-GC-MAR-005",
-    "category":"MAR",
-    "trade":"Civil",
-    "title":"Cement Approval",
-    "revision":"03",
-    "status":"Approved",
-    "date":"2026-07-11",
-    "link":"#"
-  },
-  {
-    "docNo":"DVX-GC-SD-010",
-    "category":"Safety",
-    "trade":"Safety",
-    "title":"Fire Extinguisher Inspection",
+    "docNo":"DVX-DOH-L-002",
+    "category":"Letter",
+    "trade":"N/A",
+    "title":"REQUEST FOR APPROVAL TO PROCEED WITH MOBILIZATION WORK AT SAN JUAN MEDICAL CENTER",
     "revision":"00",
-    "status":"Draft",
-    "date":"2026-07-10",
-    "link":"#"
+    "status":"Submitted",
+    "date":"2026-05-22",
+    "link":"https://drive.google.com/file/d/14Uv06hz3qxYWnzxzD1yVTU4Jfqv9yNQ8/view?usp=sharing"
+  },
+  {
+    "docNo":"DVX-DOH-L-003",
+    "category":"Letter",
+    "trade":"N/A",
+    "title":"REQUEST FOR SUSPENSION OF CONTRUCTION ACTIVITIES",
+    "revision":"00",
+    "status":"Superseded",
+    "date":"2026-06-30",
+    "link":"https://drive.google.com/file/d/1JjT9cKcAGVVMFd0eT8FZTvATni5HoYXM/view?usp=sharing"
+  },
+  {
+    "docNo":"DVX-DOH-L-004",
+    "category":"Letter",
+    "trade":"N/A",
+    "title":"Request for the Issuance of Work Suspension Order",
+    "revision":"00",
+    "status":"Submitted",
+    "date":"2026-06-30",
+    "link":"https://drive.google.com/file/d/1WQ4nnOLHlVNIN-rq7OFDW-amstP11ttL/view?usp=sharing"
   }
 ]
