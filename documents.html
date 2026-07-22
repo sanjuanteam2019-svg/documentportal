@@ -40,14 +40,14 @@
         <h1 id="approvedDocs">0</h1>
     </div>
 
-    <div class="card approved as corrected">
+    <div class="card approved-as-corrected">
         <h3>Approved as Corrected</h3>
-        <h1 id="approvedAsCorrectedDocs">0</h1>
+        <h1 id="approved-as-correctedDocs">0</h1>
     </div>
 
-    <div class="card revise &amp; resubmit">
+    <div class="card reviseResubmit">
         <h3>Revise & Resubmit</h3>
-        <h1 id="revise&ampResubmitDocs">0</h1>
+        <h1 id="reviseResubmitDocs">0</h1>
     </div>
     
     <div class="card submitted">
@@ -80,6 +80,7 @@
 
             <option value="">All Status</option>
             <option value="Approved">Approved</option>
+            <option value="Approved-As-Corrected">Approved As Corrected</option>
             <option value="Submitted">Submitted</option>
             <option value="Draft">Draft</option>
             <option value="Superseded">Superseded</option>
@@ -224,6 +225,8 @@ function updateChart(){
 
             labels:[
                 "Approved",
+                "Approved-As-Corrected",
+                "reviseResubmit",
                 "Submitted",
                 "Draft",
                 "Superseded"
@@ -233,6 +236,8 @@ function updateChart(){
 
                 data:[
                     approved,
+                    approved-as-corrected,
+                    reviseResubmit,
                     submitted,
                     draft,
                     superseded
@@ -240,7 +245,9 @@ function updateChart(){
 
                 backgroundColor:[
                     "#16a34a",
+                    "#FEBE1E",
                     "#f59e0b",
+                    "#ED4A2F",
                     "#D2591C",
                     "#D8E438"
                 ],
@@ -281,6 +288,12 @@ function updateDashboard(){
     document.getElementById("approvedDocs").textContent =
         documents.filter(d => d.status === "Approved").length;
 
+    document.getElementById("approved-as-correctedDocs").textContent =
+        documents.filter(d => d.status === "Approved As Corected").length;
+
+    document.getElementById("reviseResubmitDocs").textContent =
+        documents.filter(d => d.status === "Revise & Resubmit").length;
+
     document.getElementById("submittedDocs").textContent =
         documents.filter(d => d.status === "Submitted").length;
 
@@ -313,6 +326,12 @@ function displayDocuments(list){
 
         if(doc.status==="Approved")
             statusClass="status-approved";
+
+        if(doc.status==="Approved As Corrected")
+            statusClass="status-approved-as-corrected";
+
+        if(doc.status==="Revise & Resubmit")
+            statusClass="status-reviseResubmit";
 
         if(doc.status==="Submitted")
             statusClass="status-submitted";
