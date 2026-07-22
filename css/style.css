@@ -217,6 +217,12 @@ table{
 
 }
 
+.card.superseded{
+
+    border-left:8px solid #D8E438;
+
+}
+
 .card.draft{
 
     border-left:8px solid #6b7280;
