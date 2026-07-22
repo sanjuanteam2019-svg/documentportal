@@ -80,8 +80,8 @@
 
             <option value="">All Status</option>
             <option value="Approved">Approved</option>
-            <option value="approvedAsCorrected">approved-as-corrected</option>
-            <option value="reviseResubmitd">Revise & Resubmit</option>
+            <option value="approvedAsCorrected">Approved As Corrected</option>
+            <option value="reviseResubmitd">Revise &amp; Resubmit</option>
             <option value="Submitted">Submitted</option>
             <option value="Draft">Draft</option>
             <option value="Superseded">Superseded</option>
@@ -201,10 +201,10 @@ function updateChart(){
         documents.filter(d=>d.status==="Approved").length;
 
     const approvedAsCorrected =
-        documents.filter(d=>d.status==="Approved-As-Corrected").length;
+        documents.filter(d=>d.status==="Approved As Corrected").length;
 
     const reviseResubmit =
-        documents.filter(d=>d.status==="revise-resubmit").length;
+        documents.filter(d=>d.status==="Revise & Resubmit").length;
 
     const submitted =
         documents.filter(d=>d.status==="Submitted").length;
@@ -296,7 +296,7 @@ function updateDashboard(){
         documents.filter(d => d.status === "Approved").length;
 
     document.getElementById("approvedAsCorrectedDocs").textContent =
-        documents.filter(d => d.status === "Approved As Corected").length;
+        documents.filter(d => d.status === "Approved As Corrected").length;
 
     document.getElementById("reviseResubmitDocs").textContent =
         documents.filter(d => d.status === "Revise & Resubmit").length;
