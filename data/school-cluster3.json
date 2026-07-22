@@ -1,42 +1,52 @@
 [
   {
-    "docNo":"DVX-2025-MPSJ-DPWH-RFA-AR-048",
-    "category":"RFA",
-    "trade":"Architectural",
-    "title":"Mock up Unit Reflected Ceilling Plan (RCP)",
+    "docNo":"SC3-CVI-001",
+    "category":"CVI",
+    "trade":"N/A",
+    "title":"Estrada Building",
     "revision":"00",
-    "status":"Revise & Resubmit",
-    "date":"2025-07-15",
-    "link":"https://drive.google.com/file/d/1beQUTKE9bSD6yi22EkB4QQZJYCDjjcxB/view?usp=sharing"
-  },
-  {
-    "docNo":"DVX-GC-RFI-002",
-    "category":"RFI",
-    "trade":"Plumbing",
-    "title":"Roof Drain Inquiry",
-    "revision":"01",
-    "status":"Submitted",
-    "date":"2026-07-13",
-    "link":"#"
-  },
-  {
-    "docNo":"DVX-GC-MAR-005",
-    "category":"MAR",
-    "trade":"Civil",
-    "title":"Cement Approval",
-    "revision":"03",
     "status":"Approved",
-    "date":"2026-07-11",
-    "link":"#"
+    "date":"2025-11-14",
+    "link":"https://drive.google.com/file/d/148QoBUdxTvPvR-yVkRYQxq-MBIEwbLRV/view?usp=sharing"
   },
   {
-    "docNo":"DVX-GC-SD-010",
-    "category":"Safety",
-    "trade":"Safety",
-    "title":"Fire Extinguisher Inspection",
+    "docNo":"SC3-CVI-002",
+    "category":"CVI",
+    "trade":"N/A",
+    "title":"Estrada Building",
     "revision":"00",
-    "status":"Draft",
-    "date":"2026-07-10",
-    "link":"#"
+    "status":"Approved",
+    "date":"2025-11-14",
+    "link":"https://drive.google.com/file/d/16UE9cKMnwJFxIWqGr4LYDiar38AYkLKx/view?usp=sharing"
+  },
+  {
+    "docNo":"SC3-CVI-003",
+    "category":"CVI",
+    "trade":"N/A",
+    "title":"Estrada Building",
+    "revision":"00",
+    "status":"Approved",
+    "date":"2025-11-14",
+    "link":"https://drive.google.com/file/d/1r9t5MDL8Wf4ODnUMT3KFlsch21Jgz3II/view?usp=sharing"
+  },
+  {
+    "docNo":"SC3-CVI-004",
+    "category":"CVI",
+    "trade":"N/A",
+    "title":"SDO",
+    "revision":"00",
+    "status":"Approved",
+    "date":"2025-11-14",
+    "link":"https://drive.google.com/file/d/1RRUEkOV5_BOJpbdEiMOT3tIn2CWVXn2g/view?usp=sharing"
+  },
+  {
+    "docNo":"SC3-CVI-005",
+    "category":"CVI",
+    "trade":"N/A",
+    "title":"West Crame",
+    "revision":"00",
+    "status":"Approved",
+    "date":"2025-11-18",
+    "link":"https://drive.google.com/file/d/1LJXNuZa25D6TZrhV5rpMiSUgJZZfimNF/view?usp=sharing"
   }
 ]
