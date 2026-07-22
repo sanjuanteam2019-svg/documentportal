@@ -42,7 +42,7 @@
 
     <div class="card approved-as-corrected">
         <h3>Approved as Corrected</h3>
-        <h1 id="approved-as-correctedDocs">0</h1>
+        <h1 id="approvedAsCorrectedDocs">0</h1>
     </div>
 
     <div class="card reviseResubmit">
@@ -80,7 +80,8 @@
 
             <option value="">All Status</option>
             <option value="Approved">Approved</option>
-            <option value="Approved-As-Corrected">Approved As Corrected</option>
+            <option value="ApprovedAsCorrected">Approved As Corrected</option>
+            <option value="reviseResubmitd">Revise & Resubmit</option>
             <option value="Submitted">Submitted</option>
             <option value="Draft">Draft</option>
             <option value="Superseded">Superseded</option>
@@ -199,6 +200,9 @@ function updateChart(){
     const approved =
         documents.filter(d=>d.status==="Approved").length;
 
+    const approvedAsCorrected =
+        documents.filter(d=>d.status==="Approved As Corrected").length;
+
     const submitted =
         documents.filter(d=>d.status==="Submitted").length;
 
@@ -225,7 +229,7 @@ function updateChart(){
 
             labels:[
                 "Approved",
-                "Approved-As-Corrected",
+                "Approved As Corrected",
                 "reviseResubmit",
                 "Submitted",
                 "Draft",
@@ -236,7 +240,7 @@ function updateChart(){
 
                 data:[
                     approved,
-                    approved-as-corrected,
+                    approvedAsCorrected,
                     reviseResubmit,
                     submitted,
                     draft,
@@ -288,7 +292,7 @@ function updateDashboard(){
     document.getElementById("approvedDocs").textContent =
         documents.filter(d => d.status === "Approved").length;
 
-    document.getElementById("approved-as-correctedDocs").textContent =
+    document.getElementById("approvedAsCorrectedDocs").textContent =
         documents.filter(d => d.status === "Approved As Corected").length;
 
     document.getElementById("reviseResubmitDocs").textContent =
@@ -328,7 +332,7 @@ function displayDocuments(list){
             statusClass="status-approved";
 
         if(doc.status==="Approved As Corrected")
-            statusClass="status-approved-as-corrected";
+            statusClass="status-approvedAsCorrected";
 
         if(doc.status==="Revise & Resubmit")
             statusClass="status-reviseResubmit";
