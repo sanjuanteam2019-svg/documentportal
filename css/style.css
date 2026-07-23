@@ -104,6 +104,14 @@ td:nth-child(8){
     color:#6b7280;
     font-weight:bold;
 }
+.status-overdue{
+    background:#dc2626;
+    color:white;
+    font-weight:bold;
+    padding:4px 8px;
+    border-radius:6px;
+}   
+}
 body{
     margin:0;
     font-family:Segoe UI, Arial, sans-serif;
