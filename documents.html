@@ -434,16 +434,7 @@ function filterDocuments(){
             matchStatus &&
             matchCategory &&
             matchTrade
-
-        const today = new Date();
-const submitted = new Date(doc.dateSubmitted);
-
-const dueDate = new Date(submitted);
-dueDate.setDate(dueDate.getDate() + doc.approvalDays);
-
-const overdue =
-    doc.status === "Submitted" &&
-    today > dueDate;    
+  
         );
 
     });
