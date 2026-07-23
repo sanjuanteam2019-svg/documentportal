@@ -215,6 +215,17 @@ function updateChart(){
     const superseded =
         documents.filter(d=>d.status==="Superseded").length;
 
+    const today = new Date();
+
+const dueDate = doc.dueDate
+    ? new Date(doc.dueDate)
+    : null;
+
+const isOverdue =
+    dueDate &&
+    today > dueDate &&
+    doc.status === "Submitted";
+
     if(statusChart){
 
         statusChart.destroy();
