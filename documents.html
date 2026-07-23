@@ -65,6 +65,11 @@
         <h1 id="supersededDocs">0</h1>
     </div>
 
+    <div class="card overdue">
+    <h3>Overdue</h3>
+    <h1 id="overdueDocs">0</h1>
+</div>
+
 </div>
 
 <div class="container">
@@ -85,6 +90,7 @@
             <option value="Submitted">Submitted</option>
             <option value="Draft">Draft</option>
             <option value="Superseded">Superseded</option>
+            <option value="Overdue">Overdue</option>
 
         </select>
 
@@ -118,6 +124,7 @@
     <option value="doc-desc">Document No. (Z-A)</option>
     <option value="title-asc">Title (A-Z)</option>
     <option value="title-desc">Title (Z-A)</option>
+    
 </select>
 
     </div>
@@ -214,6 +221,13 @@ function updateChart(){
 
     const superseded =
         documents.filter(d=>d.status==="Superseded").length;
+
+    const overdue =
+    documents.filter(doc =>
+        doc.status === "Submitted" &&
+        doc.dueDate &&
+        new Date() > new Date(doc.dueDate)
+    ).length;
 
     const today = new Date();
 
@@ -320,6 +334,17 @@ function updateDashboard(){
     
     document.getElementById("supersededDocs").textContent =    
         documents.filter(d => d.status === "Superseded").length;
+
+    document.getElementById("overdueDocs").textContent =
+    documents.filter(doc => {
+
+        if (doc.status !== "Submitted") return false;
+
+        if (!doc.dueDate) return false;
+
+        return new Date() > new Date(doc.dueDate);
+
+    }).length;
 
         updateChart();
 
@@ -428,9 +453,16 @@ function filterDocuments(){
             doc.category.toLowerCase().includes(keyword) ||
             doc.trade.toLowerCase().includes(keyword);
 
-        const matchStatus =
-            selectedStatus === "" ||
-            doc.status === selectedStatus;
+        const isOverdue =
+    doc.status === "Submitted" &&
+    doc.dueDate &&
+    new Date() > new Date(doc.dueDate);
+
+const matchStatus =
+    selectedStatus === "" ||
+    (selectedStatus === "Overdue"
+        ? isOverdue
+        : doc.status === selectedStatus);
 
         const matchCategory =
             selectedCategory === "" ||
