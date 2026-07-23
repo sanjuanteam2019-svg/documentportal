@@ -85,8 +85,8 @@
 
             <option value="">All Status</option>
             <option value="Approved">Approved</option>
-            <option value="approvedAsCorrected">Approved As Corrected</option>
-            <option value="reviseResubmitd">Revise &amp; Resubmit</option>
+            <option value="Approved As Corrected">Approved As Corrected</option>
+            <option value="revise &amp; Resubmitd">Revise &amp; Resubmit</option>
             <option value="Submitted">Submitted</option>
             <option value="Draft">Draft</option>
             <option value="Superseded">Superseded</option>
@@ -228,17 +228,6 @@ function updateChart(){
         new Date() > new Date(doc.dueDate)
     ).length;
 
-    const today = new Date();
-
-const dueDate = doc.dueDate
-    ? new Date(doc.dueDate)
-    : null;
-
-const isOverdue =
-    dueDate &&
-    today > dueDate &&
-    doc.status === "Submitted";
-
     if(statusChart){
 
         statusChart.destroy();
@@ -260,7 +249,8 @@ const isOverdue =
                 "Revise & Resubmit",
                 "Submitted",
                 "Draft",
-                "Superseded"
+                "Superseded",
+                "Overdue"
             ],
 
             datasets:[{
@@ -378,8 +368,12 @@ function displayDocuments(list){
         if(doc.status==="Revise & Resubmit")
             statusClass="status-reviseResubmit";
 
-        if(doc.status==="Submitted")
-            statusClass="status-submitted";
+        if(doc.status==="Submitted"&&
+    doc.dueDate &&
+    new Date() > new Date(doc.dueDate)
+){
+    statusClass="status-overdue";
+}
 
         if(doc.status==="Draft")
             statusClass="status-draft";
@@ -401,11 +395,9 @@ function displayDocuments(list){
 
             <td>${doc.revision}</td>
 
-            <td class="${statusClass}">${doc.status}</td>
-
-            <td>${new Date(doc.date).toLocaleDateString()}</td>
-
-            <td>
+            <td class="${statusClass}">
+    ${displayStatus}
+</td>
 
                 <a
                 href="${doc.link}"
@@ -459,6 +451,9 @@ function filterDocuments(){
     doc.status === "Submitted" &&
     doc.dueDate &&
     new Date() > new Date(doc.dueDate);
+
+        const displayStatus =
+    isOverdue ? "Overdue" : doc.status;
 
         const matchStatus =
     selectedStatus === "" ||
