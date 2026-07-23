@@ -223,8 +223,7 @@ function updateChart(){
         documents.filter(d=>d.status==="Superseded").length;
 
     const overdue =
-    documents.filter(doc =>
-        doc.status === "Submitted" &&
+    documents.filter(doc =>doc.status==="Submitted" &&
         doc.dueDate &&
         new Date() > new Date(doc.dueDate)
     ).length;
@@ -461,7 +460,7 @@ function filterDocuments(){
     doc.dueDate &&
     new Date() > new Date(doc.dueDate);
 
-const matchStatus =
+        const matchStatus =
     selectedStatus === "" ||
     (selectedStatus === "Overdue"
         ? isOverdue
