@@ -1,16 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div class="chart-card">
+
+    <h3>Document Status Overview</h3>
+
+    <canvas id="statusChart"></canvas>
+
+</div>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document Register</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header>
+    <h2 id="projectTitle">📄 projectNames</h2>
+
+    <a href="projects.html">⬅ Back to Projects</a>
+</header>
+
+<div class="dashboard">
+
+    <div class="card">
+        <h3>Total Documents</h3>
+        <h1 id="totalDocs">0</h1>
+    </div>
+
+    <div class="card approved">
+        <h3>Approved</h3>
+        <h1 id="approvedDocs">0</h1>
+    </div>
+
+    <div class="card approved-as-corrected">
+        <h3>Approved As Corrected</h3>
+        <h1 id="approvedAsCorrectedDocs">0</h1>
+    </div>
+
+    <div class="card reviseResubmit">
+        <h3>Revise & Resubmit</h3>
+        <h1 id="reviseResubmitDocs">0</h1>
+    </div>
+    
+    <div class="card submitted">
+        <h3>Submitted</h3>
+        <h1 id="submittedDocs">0</h1>
+    </div>
+
+    <div class="card draft">
+        <h3>Draft</h3>
+        <h1 id="draftDocs">0</h1>
+    </div>
+
+    <div class="card superseded">
+        <h3>Superseded</h3>
+        <h1 id="supersededDocs">0</h1>
+    </div>
+
+    <div class="card overdue">
+    <h3>Overdue</h3>
+    <h1 id="overdueDocs">0</h1>
+</div>
+
+</div>
+
+<div class="container">
+
+    <div class="toolbar">
+
+        <input
+            type="text"
+            id="searchBox"
+            placeholder="Search documents...">
+
+        <select id="statusFilter">
+
+            <option value="">All Status</option>
+            <option value="Approved">Approved</option>
+            <option value="Approved As Corrected">Approved As Corrected</option>
+            <option value="revise & Resubmitd">Revise & Resubmit</option>
+            <option value="Submitted">Submitted</option>
+            <option value="Draft">Draft</option>
+            <option value="Superseded">Superseded</option>
+            <option value="Overdue">Overdue</option>
+
+        </select>
+
+        <select id="categoryFilter">
+
+    <option value="">All Categories</option>
+    <option value="RFA">RFA</option>
+    <option value="RFI">RFI</option>
+    <option value="MAR">MAR</option>
+    <option value="CVI">CVI</option>       
+    <option value="Safety">Safety</option>
+    <option value="Letter">Letter</option>
+         </select>
+
+         <select id="tradeFilter">
+    <option value="">All Trades</option>
+    <option value="Architectural">Architectural</option>
+    <option value="Civil">Civil</option>
+    <option value="Structural">Structural</option>
+    <option value="Electrical">Electrical</option>
+    <option value="Mechanical">Mechanical</option>
+    <option value="Plumbing">Plumbing</option>
+    <option value="Safety">Safety</option>
+</select>
+
+<select id="sortFilter">
+    <option value="">Sort By</option>
+    <option value="date-desc">Newest Date</option>
+    <option value="date-asc">Oldest Date</option>
+    <option value="doc-asc">Document No. (A-Z)</option>
+    <option value="doc-desc">Document No. (Z-A)</option>
+    <option value="title-asc">Title (A-Z)</option>
+    <option value="title-desc">Title (Z-A)</option>
+    
+</select>
+
+    </div>
+
+    <p id="recordCount"></p>
+
+    <div class="table-container">
+
+    <table id="docTable">
+
+        <thead>
+
+            <tr>
+                <th>Document No.</th>
+                <th>Category</th>
+                <th>Trade</th>
+                <th>Title</th>
+                <th>Revision</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>File</th>
+            </tr>
+
+        </thead>
+
+        <tbody id="tableBody">
+        </tbody>
+
+    </table>
+
+</div>
+
 <script>
 
 let documents = [];
+
 let statusChart;
 
 const params = new URLSearchParams(window.location.search);
 const project = params.get("project");
 
 if (!project) {
-    alert("No project selected.");
-    window.location.href = "projects.html";
-}
 
+    alert("No project selected.");
+
+    window.location.href = "projects.html";
+
+}
 const projectNames = {
     "government-center": "Government Center Project",
     "22-storey-multipurpose-building": "22-Storey Multipurpose Building",
@@ -19,28 +181,128 @@ const projectNames = {
     "evacuation-center": "San Juan Evacuation Center",
     "crematorium": "San Juan Crematorium"
 };
-
 document.getElementById("projectTitle").innerHTML =
     "📄 " + (projectNames[project] || "Document Register");
 
-fetch(`./data/${project}.json`)
+    fetch(`data/${project}.json`)
 .then(response => {
+
     if (!response.ok) {
+
         throw new Error("Project database not found.");
+
     }
+
     return response.json();
+
 })
 .then(data => {
 
     documents = data;
 
-    updateDashboard();
-    displayDocuments(documents);
+updateDashboard();
 
-})
-.catch(error => {
-    console.error(error);
-});
+function updateChart(){
+
+    const approved =
+        documents.filter(d=>d.status==="Approved").length;
+
+    const approvedAsCorrected =
+        documents.filter(d=>d.status==="Approved As Corrected").length;
+
+    const reviseResubmit =
+        documents.filter(d=>d.status==="Revise & Resubmit").length;
+
+    const submitted =
+        documents.filter(d=>d.status==="Submitted").length;
+
+    const draft =
+        documents.filter(d=>d.status==="Draft").length;
+
+    const superseded =
+        documents.filter(d=>d.status==="Superseded").length;
+
+    const overdue =
+    documents.filter(doc =>doc.status==="Submitted" &&
+        doc.dueDate &&
+        new Date() > new Date(doc.dueDate)
+    ).length;
+
+    if(statusChart){
+
+        statusChart.destroy();
+
+    }
+
+    const ctx =
+        document.getElementById("statusChart");
+
+    statusChart = new Chart(ctx,{
+
+        type:"doughnut",
+
+        data:{
+
+            labels:[
+                "Approved",
+                "Approved As Corrected",
+                "Revise & Resubmit",
+                "Submitted",
+                "Draft",
+                "Superseded",
+                "Overdue"
+            ],
+
+            datasets:[{
+
+                data:[
+                    approved,
+                    approvedAsCorrected,
+                    reviseResubmit,
+                    submitted,
+                    draft,
+                    superseded,
+                    overdue
+                ],
+
+                backgroundColor:[
+                    "#16a34a",
+                    "#FEBE1E",
+                    "#FE0000",
+                    "#765BFF",
+                    "#D2591C",
+                    "#D8E438",
+                    "#DC2626"
+                    
+                ],
+
+                borderWidth:1
+
+            }]
+
+        },
+
+        options:{
+
+            responsive:true,
+
+            plugins:{
+
+                legend:{
+
+                    position:"bottom"
+
+                }
+
+            }
+
+        }
+
+    });
+
+}
+
+displayDocuments(documents);
 
 function updateDashboard(){
 
@@ -48,190 +310,173 @@ function updateDashboard(){
         documents.length;
 
     document.getElementById("approvedDocs").textContent =
-        documents.filter(d=>d.status==="Approved").length;
+        documents.filter(d => d.status === "Approved").length;
 
     document.getElementById("approvedAsCorrectedDocs").textContent =
-        documents.filter(d=>d.status==="Approved As Corrected").length;
+        documents.filter(d => d.status === "Approved As Corrected").length;
 
     document.getElementById("reviseResubmitDocs").textContent =
-        documents.filter(d=>d.status==="Revise & Resubmit").length;
+        documents.filter(d => d.status === "Revise & Resubmit").length;
 
     document.getElementById("submittedDocs").textContent =
-        documents.filter(d=>d.status==="Submitted").length;
+        documents.filter(d => d.status === "Submitted").length;
 
     document.getElementById("draftDocs").textContent =
-        documents.filter(d=>d.status==="Draft").length;
-
-    document.getElementById("supersededDocs").textContent =
-        documents.filter(d=>d.status==="Superseded").length;
+        documents.filter(d => d.status === "Draft").length;
+    
+    document.getElementById("supersededDocs").textContent =    
+        documents.filter(d => d.status === "Superseded").length;
 
     document.getElementById("overdueDocs").textContent =
-        documents.filter(doc =>
-            doc.status==="Submitted" &&
-            doc.dueDate &&
-            new Date().setHours(0,0,0,0) >
-            new Date(doc.dueDate).setHours(0,0,0,0)
-        ).length;
+    documents.filter(doc => {
 
-    updateChart();
+        if (doc.status !== "Submitted") return false;
+
+        if (!doc.dueDate) return false;
+
+        return new Date() > new Date(doc.dueDate);
+
+    }).length;
+
+        updateChart();
+
 }
 
-function updateChart(){
+})
+.catch(error => {
 
-    const counts = {
-        approved: documents.filter(d=>d.status==="Approved").length,
-        approvedCorrected: documents.filter(d=>d.status==="Approved As Corrected").length,
-        revise: documents.filter(d=>d.status==="Revise & Resubmit").length,
-        submitted: documents.filter(d=>d.status==="Submitted").length,
-        draft: documents.filter(d=>d.status==="Draft").length,
-        superseded: documents.filter(d=>d.status==="Superseded").length,
-        overdue: documents.filter(doc =>
-            doc.status==="Submitted" &&
-            doc.dueDate &&
-            new Date() > new Date(doc.dueDate)
-        ).length
-    };
+    console.error(error);
 
-    if(statusChart){
-        statusChart.destroy();
-    }
-
-    statusChart = new Chart(
-        document.getElementById("statusChart"),
-        {
-            type:"doughnut",
-            data:{
-                labels:[
-                    "Approved",
-                    "Approved As Corrected",
-                    "Revise & Resubmit",
-                    "Submitted",
-                    "Draft",
-                    "Superseded",
-                    "Overdue"
-                ],
-                datasets:[{
-                    data:[
-                        counts.approved,
-                        counts.approvedCorrected,
-                        counts.revise,
-                        counts.submitted,
-                        counts.draft,
-                        counts.superseded,
-                        counts.overdue
-                    ],
-                    backgroundColor:[
-                        "#16a34a",
-                        "#FEBE1E",
-                        "#FE0000",
-                        "#765BFF",
-                        "#D2591C",
-                        "#D8E438",
-                        "#dc2626"
-                    ]
-                }]
-            }
-        }
-    );
-}
+});
 
 function displayDocuments(list){
 
-    const table = document.getElementById("tableBody");
+    const table=document.getElementById("tableBody");
 
-    table.innerHTML = "";
+    table.innerHTML="";
 
-    list.forEach(doc => {
-
-        const isOverdue =
-            doc.status === "Submitted" &&
-            doc.dueDate &&
-            new Date().setHours(0,0,0,0) >
-            new Date(doc.dueDate).setHours(0,0,0,0);
-
-        const displayStatus =
-            isOverdue ? "Overdue" : doc.status;
+    list.forEach(doc=>{
 
         let statusClass="";
 
         if(doc.status==="Approved")
             statusClass="status-approved";
-        else if(doc.status==="Approved As Corrected")
+
+        if(doc.status==="Approved As Corrected")
             statusClass="status-approvedAsCorrected";
-        else if(doc.status==="Revise & Resubmit")
+
+        if(doc.status==="Revise & Resubmit")
             statusClass="status-reviseResubmit";
-        else if(isOverdue)
-            statusClass="status-overdue";
-        else if(doc.status==="Draft")
-            statusClass="status-draft";
-        else if(doc.status==="Superseded")
-            statusClass="status-superseded";
 
-        table.innerHTML += `
-        <tr>
-            <td>${doc.docNo || ""}</td>
-            <td>${doc.category || ""}</td>
-            <td>${doc.trade || ""}</td>
-            <td>${doc.title || ""}</td>
-            <td>${doc.revision || ""}</td>
-            <td class="${statusClass}">
-                ${displayStatus}
-            </td>
-            <td>${doc.date || ""}</td>
-            <td>
-                <a href="${doc.link}"
-                   target="_blank"
-                   class="view-btn">
-                   View
-                </a>
-            </td>
-        </tr>`;
-    });
-
-    document.getElementById("recordCount").innerHTML =
-        `Total Documents : <b>${list.length}</b>`;
+        if(doc.status==="Submitted"&&
+    doc.dueDate &&
+    new Date() > new Date(doc.dueDate)
+){
+    statusClass="status-overdue";
 }
 
-const search = document.getElementById("searchBox");
-const status = document.getElementById("statusFilter");
+        if(doc.status==="Draft")
+            statusClass="status-draft";
+
+        if(doc.status==="Superseded")
+            statusClass="status-superseded";
+
+        table.innerHTML+=`
+
+        <tr>
+
+            <td>${doc.docNo}</td>
+
+            <td>${doc.category}</td>
+
+            <td>${doc.trade}</td>
+
+            <td>${doc.title}</td>
+
+            <td>${doc.revision}</td>
+
+            <td class="${statusClass}">
+    ${displayStatus}
+</td>
+
+                <a
+                href="${doc.link}"
+                target="_blank"
+                class="view-btn">
+
+                View
+
+                </a>
+
+            </td>
+
+        </tr>
+
+        `;
+
+    });
+
+    document.getElementById("recordCount").innerHTML=
+        "Total Documents : <b>"+list.length+"</b>";
+
+}
+
+const search=document.getElementById("searchBox");
+
+const status=document.getElementById("statusFilter");
+
 const category = document.getElementById("categoryFilter");
+
 const trade = document.getElementById("tradeFilter");
+
 const sort = document.getElementById("sortFilter");
 
 function filterDocuments(){
 
     const keyword = search.value.toLowerCase();
 
-    let filtered = documents.filter(doc => {
+    const selectedStatus = status.value;
+    const selectedCategory = category.value;
+    const selectedTrade = trade.value;
 
-        const isOverdue =
-            doc.status==="Submitted" &&
-            doc.dueDate &&
-            new Date().setHours(0,0,0,0) >
-            new Date(doc.dueDate).setHours(0,0,0,0);
+    const filtered = documents.filter(doc => {
 
         const matchText =
-            (doc.docNo || "").toLowerCase().includes(keyword) ||
-            (doc.title || "").toLowerCase().includes(keyword);
+            doc.docNo.toLowerCase().includes(keyword) ||
+            doc.title.toLowerCase().includes(keyword) ||
+            doc.category.toLowerCase().includes(keyword) ||
+            doc.trade.toLowerCase().includes(keyword);
+
+        const isOverdue =
+    doc.status === "Submitted" &&
+    doc.dueDate &&
+    new Date() > new Date(doc.dueDate);
+
+        const displayStatus =
+    isOverdue ? "Overdue" : doc.status;
 
         const matchStatus =
-            status.value==="" ||
-            (status.value==="Overdue"
-                ? isOverdue
-                : doc.status===status.value);
+    selectedStatus === "" ||
+    (selectedStatus === "Overdue"
+        ? isOverdue
+        : doc.status === selectedStatus);
 
         const matchCategory =
-            category.value==="" ||
-            doc.category===category.value;
+            selectedCategory === "" ||
+            doc.category === selectedCategory;
 
         const matchTrade =
-            trade.value==="" ||
-            doc.trade===trade.value;
+            selectedTrade === "" ||
+            doc.trade === selectedTrade;
 
-        return matchText &&
-               matchStatus &&
-               matchCategory &&
-               matchTrade;
+        return (
+            matchText &&
+            matchStatus &&
+            matchCategory &&
+            matchTrade
+  
+        );
+
     });
 
     switch(sort.value){
@@ -259,18 +504,23 @@ function filterDocuments(){
         case "title-desc":
             filtered.sort((a,b)=>b.title.localeCompare(a.title));
             break;
+
     }
 
     displayDocuments(filtered);
+
 }
 
-search.addEventListener("keyup", filterDocuments);
-status.addEventListener("change", filterDocuments);
+search.addEventListener("keyup",filterDocuments);
+
+status.addEventListener("change",filterDocuments);
+
 category.addEventListener("change", filterDocuments);
+
 trade.addEventListener("change", filterDocuments);
+
 sort.addEventListener("change", filterDocuments);
 
 </script>
 
 </body>
-</html>
