@@ -45,11 +45,11 @@ async function loadDashboard() {
     document.getElementById("approved").textContent =
         allDocs.filter(d => d.status === "Approved").length;
 
-    document.getElementById("approvedComments").textContent =
-        allDocs.filter(d => d.status === "Approved with Comments").length;
+    document.getElementById("approvedAsCorrected").textContent =
+        allDocs.filter(d => d.status === "Approved as Corrected").length;
 
-    document.getElementById("reviseResubmit").textContent =
-        allDocs.filter(d => d.status === "Revise &amp; Resubmit").length;
+    document.getElementById("Revise &amp; Resubmit").textContent =
+        allDocs.filter(d => d.status === "Revise & Resubmit").length;
 
     document.getElementById("draft").textContent =
         allDocs.filter(d => d.status === "Draft").length;
