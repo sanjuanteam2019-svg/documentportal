@@ -352,14 +352,6 @@ function updateDashboard(){
 
 function displayDocuments(list){
 
-    const isOverdue =
-    doc.status === "Submitted" &&
-    doc.dueDate &&
-    new Date() > new Date(doc.dueDate);
-
-    const displayStatus =
-    isOverdue ? "Overdue" : doc.status;
-
     const table=document.getElementById("tableBody");
 
     table.innerHTML="";
@@ -410,27 +402,61 @@ list.forEach(doc => {
 
             <td>${doc.title}</td>
 
-            <td>${doc.revision}</td>
+    list.forEach(doc => {
 
-            <td class="${statusClass}">
+    let statusClass = "";
+
+    const isOverdue =
+        doc.status === "Submitted" &&
+        doc.dueDate &&
+        new Date() > new Date(doc.dueDate);
+
+    const displayStatus =
+        isOverdue ? "Overdue" : doc.status;
+
+    if (doc.status === "Approved")
+        statusClass = "status-approved";
+
+    if (doc.status === "Approved As Corrected")
+        statusClass = "status-approvedAsCorrected";
+
+    if (doc.status === "Revise & Resubmit")
+        statusClass = "status-reviseResubmit";
+
+    if (doc.status === "Submitted")
+        statusClass = "status-submitted";
+
+    if (isOverdue)
+        statusClass = "status-overdue";
+
+    if (doc.status === "Draft")
+        statusClass = "status-draft";
+
+    if (doc.status === "Superseded")
+        statusClass = "status-superseded";
+
+    table.innerHTML += `
+    <tr>
+        <td>${doc.docNo}</td>
+        <td>${doc.category}</td>
+        <td>${doc.trade}</td>
+        <td>${doc.title}</td>
+        <td>${doc.revision}</td>
+        <td class="${statusClass}">
             ${displayStatus}
-            </td>
+        </td>
+        <td>${doc.date}</td>
+        <td>
+            <a href="${doc.link}"
+               target="_blank"
+               class="view-btn">
+               View
+            </a>
+        </td>
+    </tr>
+    `;
 
-            <td>${doc.date}</td>
-
-<td>
-    <a href="${doc.link}"
-       target="_blank"
-       class="view-btn">
-       View
-    </a>
-</td>
-
-        </tr>
-
-        `;
-
-    });
+});
 
     document.getElementById("recordCount").innerHTML=
         "Total Documents : <b>"+list.length+"</b>";
