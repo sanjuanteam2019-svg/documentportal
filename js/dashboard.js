@@ -1,10 +1,10 @@
 const projectFiles = [
-    "data/22-storey-multipurpose-building.json",
-    "data/school-cluster3.json",
-    "data/medical-center.json",
-    "data/government-center.json",
-    "data/evacuation-center.json",
-    "data/crematorium.json"
+    "22-storey-multipurpose-building": "22-Storey Multipurpose Building",
+    "government-center": "Government Center",
+    "school-cluster3": "School Cluster 3",
+    "medical-center": "Medical Center",
+    "evacuation-center": "Evacuation Center",
+    "crematorium": "Crematorium"
 ];
 
 async function loadDashboard() {
@@ -25,9 +25,11 @@ async function loadDashboard() {
             const docs = await response.json();
 
             docs.forEach(doc => {
-                doc.project = file
-                    .replace("data/", "")
-                    .replace(".json", "");
+                const projectKey = file
+                        .replace("data/", "")
+                        .replace(".json", "");
+
+                doc.project = projectNames[projectKey] || projectKey;
             });
 
             allDocs = allDocs.concat(docs);
@@ -45,6 +47,14 @@ async function loadDashboard() {
 
     // Build dashboard table
     const tbody = document.getElementById("dashboardTable");
+    const formattedDate = new Date(doc.date).toLocaleDateString(
+    "en-US",
+    {
+        year: "numeric",
+        month: "short",
+        day: "numeric"
+    }
+);
 
     tbody.innerHTML = "";
 
@@ -56,7 +66,7 @@ async function loadDashboard() {
             <td>${doc.project}</td>
             <td>${doc.title}</td>
             <td>${doc.status}</td>
-            <td>${doc.date}</td>
+           <td>${formattedDate}</td>
         </tr>
         `;
 
