@@ -1,7 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
 
 <div class="chart-card">
 
@@ -86,7 +96,7 @@
             <option value="">All Status</option>
             <option value="Approved">Approved</option>
             <option value="Approved As Corrected">Approved As Corrected</option>
-            <option value="revise & Resubmit">Revise & Resubmit</option>
+            <option value="Revise & Resubmit">Revise & Resubmit</option>
             <option value="Submitted">Submitted</option>
             <option value="Draft">Draft</option>
             <option value="Superseded">Superseded</option>
@@ -351,36 +361,52 @@ function updateDashboard(){
 
 function displayDocuments(list){
 
+    const isOverdue =
+    doc.status === "Submitted" &&
+    doc.dueDate &&
+    new Date() > new Date(doc.dueDate);
+
+    const displayStatus =
+    isOverdue ? "Overdue" : doc.status;
+
     const table=document.getElementById("tableBody");
 
     table.innerHTML="";
 
-    list.forEach(doc=>{
+list.forEach(doc => {
 
-        let statusClass="";
+    let statusClass = "";
 
-        if(doc.status==="Approved")
-            statusClass="status-approved";
+    const isOverdue =
+        doc.status === "Submitted" &&
+        doc.dueDate &&
+        new Date() > new Date(doc.dueDate);
 
-        if(doc.status==="Approved As Corrected")
-            statusClass="status-approvedAsCorrected";
+    const displayStatus =
+    isOverdue ? "Overdue" : doc.status;
 
-        if(doc.status==="Revise & Resubmit")
-            statusClass="status-reviseResubmit";
+    if (doc.status === "Approved")
+        statusClass = "status-approved";
 
-        if(doc.status==="Submitted"&&
-    doc.dueDate &&
-    new Date() > new Date(doc.dueDate)
-){
-    statusClass="status-overdue";
-}
+    if (doc.status === "Approved As Corrected")
+        statusClass = "status-approvedAsCorrected";
 
-        if(doc.status==="Draft")
-            statusClass="status-draft";
+    if (doc.status === "Revise & Resubmit")
+        statusClass = "status-reviseResubmit";
 
-        if(doc.status==="Superseded")
-            statusClass="status-superseded";
+    if (doc.status === "Submitted")
+        statusClass = "status-submitted";
 
+    if (isOverdue)
+        statusClass = "status-overdue";
+
+    if (doc.status === "Draft")
+        statusClass = "status-draft";
+
+    if (doc.status === "Superseded")
+        statusClass = "status-superseded";
+
+});
         table.innerHTML+=`
 
         <tr>
@@ -396,19 +422,18 @@ function displayDocuments(list){
             <td>${doc.revision}</td>
 
             <td class="${statusClass}">
-    ${displayStatus}
-</td>
-
-                <a
-                href="${doc.link}"
-                target="_blank"
-                class="view-btn">
-
-                View
-
-                </a>
-
+            ${displayStatus}
             </td>
+
+            <td>${doc.date}</td>
+
+<td>
+    <a href="${doc.link}"
+       target="_blank"
+       class="view-btn">
+       View
+    </a>
+</td>
 
         </tr>
 
