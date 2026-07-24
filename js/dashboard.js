@@ -1,11 +1,20 @@
 const projectFiles = [
+    "data/22-storey-multipurpose-building.json",
+    "data/government-center.json",
+    "data/school-cluster3.json",
+    "data/medical-center.json",
+    "data/evacuation-center.json",
+    "data/crematorium.json"
+];
+
+const projectNames = {
     "22-storey-multipurpose-building": "22-Storey Multipurpose Building",
     "government-center": "Government Center",
     "school-cluster3": "School Cluster 3",
     "medical-center": "Medical Center",
     "evacuation-center": "Evacuation Center",
     "crematorium": "Crematorium"
-];
+};
 
 async function loadDashboard() {
 
@@ -22,31 +31,34 @@ async function loadDashboard() {
                 continue;
             }
 
-            const docs = await response.json();
+           const docs = await response.json();
 
-            docs.forEach(doc => {
-                const projectKey = file
-                        .replace("data/", "")
-                        .replace(".json", "");
+           const projectKey = file
+              .replace("data/", "")
+              .replace(".json", "");
 
-                doc.project = projectNames[projectKey] || projectKey;
-            });
+           docs.forEach(doc => {
+               doc.project = projectNames[projectKey];
+           });
 
-            allDocs = allDocs.concat(docs);
+           allDocs = allDocs.concat(docs);
 
-        } catch (err) {
+        } catch(err) {
 
             console.error(err);
 
         }
 
-    }
-
-    // Sort after all files are loaded
+        } // Sort after all files are loaded
     allDocs.sort((a, b) => new Date(b.date) - new Date(a.date));
 
     // Build dashboard table
     const tbody = document.getElementById("dashboardTable");
+
+    tbody.innerHTML = "";
+
+    allDocs.slice(0, 10).forEach(doc => {
+
     const formattedDate = new Date(doc.date).toLocaleDateString(
     "en-US",
     {
@@ -54,11 +66,7 @@ async function loadDashboard() {
         month: "short",
         day: "numeric"
     }
-);
-
-    tbody.innerHTML = "";
-
-    allDocs.slice(0, 10).forEach(doc => {
+);    
 
         tbody.innerHTML += `
         <tr>
@@ -98,5 +106,5 @@ async function loadDashboard() {
 
     document.getElementById("overdue").textContent = 0;
 
-}
-loadDashboard();
+    }
+    loadDashboard();
