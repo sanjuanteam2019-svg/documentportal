@@ -40,29 +40,26 @@ async function loadDashboard() {
 
     // Status Counts
     document.getElementById("submitted").textContent =
-        allDocs.filter(d => d.status === "Submitted").length;
+    allDocs.filter(d => d.status === "Submitted").length;
 
-    document.getElementById("approved").textContent =
-        allDocs.filter(d => d.status === "Approved").length;
+document.getElementById("approved").textContent =
+    allDocs.filter(d => d.status === "Approved").length;
 
-    document.getElementById("approvedAsCorrected").textContent =
-        allDocs.filter(d => d.status === "Approved as Corrected").length;
+document.getElementById("approvedAsCorrected").textContent =
+    allDocs.filter(d => d.status === "Approved As Corrected").length;
 
-    document.getElementById("Revise &amp; Resubmit").textContent =
-        allDocs.filter(d => d.status === "Revise & Resubmit").length;
+document.getElementById("reviseResubmit").textContent =
+    allDocs.filter(d => d.status === "Revise & Resubmit").length;
 
-    document.getElementById("draft").textContent =
-        allDocs.filter(d => d.status === "Draft").length;
-     
-    document.getElementById("dueThisWeek").textContent = 0
-        allDocs.filter(d => d.status === "Due This Week").length;    
-    
-    document.getElementById("superseded").textContent =
-        allDocs.filter(d => d.status === "Superseded").length;  
+document.getElementById("draft").textContent =
+    allDocs.filter(d => d.status === "Draft").length;
 
-    // Placeholder until due dates are added
-    document.getElementById("overdue").textContent = 0;
+document.getElementById("superseded").textContent =
+    allDocs.filter(d => d.status === "Superseded").length;
 
+document.getElementById("dueThisWeek").textContent = 0;
+
+document.getElementById("overdue").textContent = 0;
 }
 
 loadDashboard();
