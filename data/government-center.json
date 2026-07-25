@@ -1,5 +1,15 @@
 [
   {
+    "docNo":"GCSJ-CVI-001",
+    "category":"CVI",
+    "trade":"N/A",
+    "title":"Shop Drawing of Bidet",
+    "revision":"00",
+    "status":"Approved",
+    "date":"2026-07-06",
+    "link":"https://drive.google.com/file/d/1W29J7yLhJYV7VrT-h2Hrz4rXyO3gVKUh/view?usp=sharing"
+  },
+  {
     "docNo":"DVX-2026-GCSJ-DPWH-RFA-AR-123 R2",
     "category":"RFA",
     "trade":"Architectural",
@@ -18,16 +28,6 @@
     "status":"Superseded",
     "date":"2026-06-03",
     "link":"https://drive.google.com/file/d/1WarztsdrHh5wEWIjIeLcojhvnA_ohwxZ/view?usp=sharing"
-  },
-  {
-    "docNo":"DVX-GC-MAR-005",
-    "category":"MAR",
-    "trade":"Civil",
-    "title":"Cement Approval",
-    "revision":"03",
-    "status":"Approved",
-    "date":"2026-07-11",
-    "link":"#"
   },
   {
     "docNo":"DVX-GC-SD-010",
