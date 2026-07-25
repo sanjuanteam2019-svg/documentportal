@@ -90,6 +90,7 @@
             <option value="Revise & Resubmit">Revise & Resubmit</option>
             <option value="Submitted">Submitted</option>
             <option value="Draft">Draft</option>
+            <option value="Cancelled">Cancelled</option>
             <option value="Superseded">Superseded</option>
             <option value="Overdue">Overdue</option>
 
@@ -220,6 +221,9 @@ function updateChart(){
     const draft =
         documents.filter(d=>d.status==="Draft").length;
 
+    const cancelled =
+        documents.filter(d=>d.status==="Cancelled").length;
+
     const superseded =
         documents.filter(d=>d.status==="Superseded").length;
 
@@ -251,6 +255,7 @@ function updateChart(){
                 "Submitted",
                 "Draft",
                 "Superseded",
+                "Cancelled",
                 "Overdue"
             ],
 
@@ -263,6 +268,7 @@ function updateChart(){
                     submitted,
                     draft,
                     superseded,
+                    cancelled,
                     overdue
                 ],
 
@@ -273,6 +279,7 @@ function updateChart(){
                     "#765BFF",
                     "#D2591C",
                     "#D8E438",
+                    "#EDADAD",
                     "#DC2626"
                     
                 ],
@@ -324,6 +331,9 @@ function updateDashboard(){
 
     document.getElementById("draftDocs").textContent =
         documents.filter(d => d.status === "Draft").length;
+
+    document.getElementById("cancelledDocs").textContent =
+        documents.filter(d => d.status === "Cancelled").length;
     
     document.getElementById("supersededDocs").textContent =    
         documents.filter(d => d.status === "Superseded").length;
@@ -385,6 +395,9 @@ function displayDocuments(list) {
 
         if (doc.status === "Draft")
             statusClass = "status-draft";
+
+        if (doc.status === "Cancelled")
+            statusClass = "status-cancelled";
 
         if (doc.status === "Superseded")
             statusClass = "status-superseded";
