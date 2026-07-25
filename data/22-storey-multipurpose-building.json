@@ -1,15 +1,5 @@
 [
   {
-    "docNo":"DVX-2025-MPSJ-DPWH-RFA-AR-048",
-    "category":"RFA",
-    "trade":"Architectural",
-    "title":"Mock up Unit Reflected Ceilling Plan (RCP)",
-    "revision":"00",
-    "status":"Revise & Resubmit",
-    "date":"2025-07-15",
-    "link":"https://drive.google.com/file/d/1beQUTKE9bSD6yi22EkB4QQZJYCDjjcxB/view?usp=sharing"
-  },
-  {
     "docNo":"DVX-2026-DPWH-MAR-AR-020 R2",
     "category":"MAR",
     "trade":"Architectural",
@@ -18,6 +8,16 @@
     "status":"Revise & Resubmit",
     "date":"2026-07-21",
     "link":"https://drive.google.com/file/d/1amhvTwS3NbE2iSCyc4lnU1h0oDmmrn7I/view?usp=sharing"
+  },
+  {
+    "docNo":"DVX-2025-MPSJ-DPWH-RFA-AR-048",
+    "category":"RFA",
+    "trade":"Architectural",
+    "title":"Mock up Unit Reflected Ceilling Plan (RCP)",
+    "revision":"00",
+    "status":"Revise & Resubmit",
+    "date":"2025-07-15",
+    "link":"https://drive.google.com/file/d/1beQUTKE9bSD6yi22EkB4QQZJYCDjjcxB/view?usp=sharing"
   },
   {
     "docNo":"DVX-2025-MPSJ-DPWH-RFA-AR-047 R1",
