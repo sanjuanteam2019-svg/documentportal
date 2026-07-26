@@ -100,7 +100,7 @@ async function loadDashboard() {
         allDocs.filter(d => d.status === "Draft").length;
 
     document.getElementById("cancelled").textContent =
-        allDocs.filter(d => d.status === "cancelled").length;
+        allDocs.filter(d => d.status === "Cancelled").length;
 
     document.getElementById("superseded").textContent =
         allDocs.filter(d => d.status === "Superseded").length;
