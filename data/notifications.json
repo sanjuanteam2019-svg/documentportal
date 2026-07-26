@@ -4,7 +4,7 @@
         "docNo": "DVX-2026-DPWH-RFA-AR-020",
         "project": "Government Center",
         "status": "Revise & Resubmit",
-        "assignedTo": "Engr. Santos",
+        "assignedTo": "Ar. Cris Casili",
         "returnedBy": "Consultant",
         "date": "2026-07-25",
         "comments": "Revise door schedule and update details.",
@@ -13,11 +13,11 @@
     {
         "id": 2,
         "docNo": "DVX-2026-DPWH-MAR-018",
-        "project": "Medical Center",
+        "project": "22-storey-multipurpose-building",
         "status": "Approved As Corrected",
-        "assignedTo": "Engr. Cruz",
+        "assignedTo": "Engr. Jimrose Beltran",
         "returnedBy": "Consultant",
-        "date": "2026-07-26",
+        "date": "2026-07-21",
         "comments": "Correct title block and keynote numbering.",
         "read": false
     }
