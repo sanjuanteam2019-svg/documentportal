@@ -159,6 +159,12 @@ table{
    DASHBOARD
 =========================== */
 
+.logo {
+    width: 120px;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px auto;
+}
 .dashboard{
 
     display:grid;
