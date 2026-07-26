@@ -227,7 +227,7 @@ function updateChart(){
         documents.filter(d=>d.status==="Draft").length;
 
     const cancelled =
-        documents.filter(d=>d.status==="cancelled").length;
+        documents.filter(d=>d.status==="Cancelled").length;
 
     const superseded =
         documents.filter(d=>d.status==="Superseded").length;
@@ -338,7 +338,7 @@ function updateDashboard(){
         documents.filter(d => d.status === "Draft").length;
 
     document.getElementById("cancelledDocs").textContent =
-        documents.filter(d => d.status === "cancelled").length;
+        documents.filter(d => d.status === "Cancelled").length;
     
     document.getElementById("supersededDocs").textContent =    
         documents.filter(d => d.status === "Superseded").length;
