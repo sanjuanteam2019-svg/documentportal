@@ -338,7 +338,7 @@ function updateDashboard(){
         documents.filter(d => d.status === "Draft").length;
 
     document.getElementById("cancelledDocs").textContent =
-        documents.filter(d => d.status === "Cancelled").length;
+        documents.filter(d => d.status === "cancelled").length;
     
     document.getElementById("supersededDocs").textContent =    
         documents.filter(d => d.status === "Superseded").length;
