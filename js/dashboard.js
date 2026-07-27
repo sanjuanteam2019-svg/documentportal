@@ -1,3 +1,10 @@
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+if (currentUser) {
+    document.getElementById("welcomeUser").textContent =
+        "Welcome " + currentUser.name;
+}
+
 const projectFiles = [
     "data/22-storey-multipurpose-building.json",
     "data/government-center.json",
