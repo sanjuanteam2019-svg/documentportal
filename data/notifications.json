@@ -5,20 +5,9 @@
         "project": "Government Center",
         "status": "Revise & Resubmit",
         "assignedTo": "Ar. Cris Casili",
-        "returnedBy": "Consultant",
-        "date": "2026-07-25",
-        "comments": "Revise door schedule and update details.",
-        "read": false
-    },
-    {
-        "id": 2,
-        "docNo": "DVX-2026-DPWH-MAR-018",
-        "project": "22-storey-multipurpose-building",
-        "status": "Approved As Corrected",
-        "assignedTo": "Engr. Jimrose Beltran",
-        "returnedBy": "Consultant",
+        "returnedBy": "WTA",
         "date": "2026-07-21",
-        "comments": "Correct title block and keynote numbering.",
+        "comments": "Incomplete Attachments.",
         "read": false
     }
 ]
