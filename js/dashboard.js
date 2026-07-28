@@ -25,36 +25,37 @@ const projectNames = {
 
 async function loadDashboard() {
 
+    console.log("Dashboard started");
+
     let allDocs = [];
 
     for (const file of projectFiles) {
+
+        console.log("Loading:", file);
 
         try {
 
             const response = await fetch(file);
 
-            if (!response.ok) {
-                console.error(`Cannot load ${file}`);
-                continue;
-            }
+            console.log(response.status);
 
-           const docs = await response.json();
+            const docs = await response.json();
 
-           const projectKey = file
-              .replace("data/", "")
-              .replace(".json", "");
+            console.log(file, docs.length);
 
-           docs.forEach(doc => {
-               doc.project = projectNames[projectKey];
-           });
+            allDocs = allDocs.concat(docs);
 
-           allDocs = allDocs.concat(docs);
+        } catch (err) {
 
-        } catch(err) {
-
-            console.error(err);
+            console.error(file, err);
 
         }
+
+    }
+
+    console.log("Total Docs:", allDocs.length);
+
+}
 
         } // Sort after all files are loaded
     allDocs.sort((a, b) => new Date(b.date) - new Date(a.date));
