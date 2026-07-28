@@ -1,5 +1,7 @@
-// Redirect to login if not authenticated
-if (localStorage.getItem("loggedIn") !== "true") {
+// Check if a user is logged in
+const currentUser = localStorage.getItem("currentUser");
+
+if (!currentUser) {
     window.location.href = "index.html";
 }
 
@@ -9,8 +11,7 @@ const logoutBtn = document.getElementById("logoutBtn");
 if (logoutBtn) {
     logoutBtn.addEventListener("click", () => {
 
-        localStorage.removeItem("loggedIn");
-        localStorage.removeItem("username");
+        localStorage.removeItem("currentUser");
 
         window.location.href = "index.html";
 
