@@ -1,8 +1,8 @@
-const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+const username = localStorage.getItem("username");
 
-if (currentUser) {
+if (username) {
     document.getElementById("welcomeUser").textContent =
-        "Welcome " + currentUser.name;
+        "Welcome, " + username;
 }
 
 const projectFiles = [
