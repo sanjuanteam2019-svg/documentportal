@@ -1,18 +1,12 @@
+// Redirect to login if not authenticated
 if (localStorage.getItem("loggedIn") !== "true") {
     window.location.href = "index.html";
 }
 
-<li>
-    <a href="#" onclick="logout(); return false;"
-       style="color:white;text-decoration:none;">
-       🚪 Logout
-    </a>
-</li>
-
+// Logout button
 const logoutBtn = document.getElementById("logoutBtn");
 
 if (logoutBtn) {
-
     logoutBtn.addEventListener("click", () => {
 
         localStorage.removeItem("loggedIn");
@@ -21,5 +15,4 @@ if (logoutBtn) {
         window.location.href = "index.html";
 
     });
-
 }
