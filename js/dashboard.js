@@ -2,7 +2,7 @@ const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
 if (currentUser) {
     document.getElementById("welcomeUser").textContent =
-        `Welcome, ${currentUser.user}`;
+        `Welcome, ${currentUser.username}`;
 }
 
 const projectFiles = [
