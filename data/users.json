@@ -3,8 +3,8 @@
     "id": 1,
     "username": "admin",
     "password": "admin123",
-    "name": "John Paul Ronulo",
-    "position": "Document Controller",
+    "name": "Administrator",
+    "position": "Administrator",
     "email": "john@devex.com",
     "role": "Document Controller",
     "projects": [
