@@ -2,6 +2,14 @@
 // Demo Users
 // =========================
 
+const existingSession = JSON.parse(
+    localStorage.getItem("currentUser")
+);
+
+if (existingSession) {
+    window.location.href = "dashboard.html";
+}
+
 const users = [
     {
         username: "admin",
