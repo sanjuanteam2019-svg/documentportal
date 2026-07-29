@@ -1,38 +1,62 @@
-async function login() {
+// =========================
+// Demo Users
+// =========================
 
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+const users = [
+    {
+        username: "admin",
+        password: "admin123",
+        fullname: "Administrator",
+        role: "Administrator"
+    },
+    {
+        username: "john",
+        password: "12345",
+        fullname: "John Paul",
+        role: "Document Controller"
+    }
+];
 
-    try {
+// =========================
+// Login
+// =========================
 
-        const response = await fetch("data/users.json");
-        const users = await response.json();
+const loginForm = document.getElementById("loginForm");
+
+if (loginForm) {
+
+    loginForm.addEventListener("submit", function (e) {
+
+        e.preventDefault();
+
+        const username = document.getElementById("username").value.trim();
+
+        const password = document.getElementById("password").value;
 
         const user = users.find(u =>
             u.username === username &&
-            u.password === password &&
-            u.active === true
+            u.password === password
         );
 
         if (!user) {
-
             alert("Invalid username or password.");
             return;
-
         }
 
-        // Save logged-in user
-        localStorage.setItem("currentUser", JSON.stringify(user));
+        const session = {
+            username: user.username,
+            fullname: user.fullname,
+            role: user.role,
+            loginTime: new Date().toISOString()
+        };
 
-        // Go to dashboard
+        localStorage.setItem(
+            "currentUser",
+            JSON.stringify(session)
+        );
+
         window.location.href = "dashboard.html";
 
-    } catch (err) {
-
-        console.error(err);
-
-        alert("Unable to load users.");
-
-    }
+    });
 
 }
