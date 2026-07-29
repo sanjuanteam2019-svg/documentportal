@@ -1,8 +1,8 @@
 [
   {
     "id": 1,
-    "username": "john",
-    "password": "123456",
+    "username": "admin",
+    "password": "admin123",
     "name": "John Paul Ronulo",
     "position": "Document Controller",
     "email": "john@devex.com",
