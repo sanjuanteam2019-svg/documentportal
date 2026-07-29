@@ -33,24 +33,4 @@ const loginForm = document.getElementById("loginForm");
 
 if (loginForm) {
 
-    <form id="loginForm">
-
-    <input
-        type="text"
-        id="username"
-        placeholder="Username"
-        required>
-
-    <input
-        type="password"
-        id="password"
-        placeholder="Password"
-        required>
-
-    <button type="submit">
-        LOGIN
-    </button>
-
-</form>
-
 }
