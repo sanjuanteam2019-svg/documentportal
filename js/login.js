@@ -25,38 +25,24 @@ const loginForm = document.getElementById("loginForm");
 
 if (loginForm) {
 
-    loginForm.addEventListener("submit", function (e) {
+    <form id="loginForm">
 
-        e.preventDefault();
+    <input
+        type="text"
+        id="username"
+        placeholder="Username"
+        required>
 
-        const username = document.getElementById("username").value.trim();
+    <input
+        type="password"
+        id="password"
+        placeholder="Password"
+        required>
 
-        const password = document.getElementById("password").value;
+    <button type="submit">
+        LOGIN
+    </button>
 
-        const user = users.find(u =>
-            u.username === username &&
-            u.password === password
-        );
-
-        if (!user) {
-            alert("Invalid username or password.");
-            return;
-        }
-
-        const session = {
-            username: user.username,
-            fullname: user.fullname,
-            role: user.role,
-            loginTime: new Date().toISOString()
-        };
-
-        localStorage.setItem(
-            "currentUser",
-            JSON.stringify(session)
-        );
-
-        window.location.href = "dashboard.html";
-
-    });
+</form>
 
 }
