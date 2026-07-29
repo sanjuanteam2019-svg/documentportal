@@ -33,4 +33,38 @@ const loginForm = document.getElementById("loginForm");
 
 if (loginForm) {
 
+loginForm.addEventListener("submit", function (e) {
+
+        e.preventDefault();
+
+        const username = document.getElementById("username").value.trim();
+        const password = document.getElementById("password").value;
+
+        const user = users.find(u =>
+            u.username === username &&
+            u.password === password
+        );
+
+        if (!user) {
+            alert("Invalid username or password.");
+            return;
+        }
+
+        const session = {
+            username: user.username,
+            fullname: user.fullname,
+            role: user.role,
+            loginTime: new Date().toISOString()
+        };
+
+        localStorage.setItem(
+            "currentUser",
+            JSON.stringify(session)
+        );
+
+        window.location.href = "dashboard.html";
+
+    });
+    
+
 }
