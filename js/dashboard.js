@@ -22,57 +22,49 @@ const projectNames = {
 };
 
 async function loadDashboard() {
-
     console.log("Dashboard started");
 
     let allDocs = [];
 
     for (const file of projectFiles) {
-
         console.log("Loading:", file);
-
         try {
-
             const response = await fetch(file);
-
             console.log(response.status);
 
             const docs = await response.json();
-
             console.log(file, docs.length);
+
+            // Attach project name if missing
+            docs.forEach(d => {
+                if (!d.project) {
+                    const key = file.replace("data/", "").replace(".json", "");
+                    d.project = projectNames[key] || key;
+                }
+            });
 
             allDocs = allDocs.concat(docs);
 
         } catch (err) {
-
             console.error(file, err);
-
         }
-
     }
 
     console.log("Total Docs:", allDocs.length);
 
-}
-
-        } // Sort after all files are loaded
+    // ✅ Sort after all files are loaded
     allDocs.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-    // Build dashboard table
+    // ✅ Build dashboard table
     const tbody = document.getElementById("dashboardTable");
-
     tbody.innerHTML = "";
 
     allDocs.slice(0, 10).forEach(doc => {
-
-    const formattedDate = new Date(doc.date).toLocaleDateString(
-    "en-US",
-    {
-        year: "numeric",
-        month: "short",
-        day: "numeric"
-    }
-);    
+        const formattedDate = new Date(doc.date).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "short",
+            day: "numeric"
+        });
 
         tbody.innerHTML += `
         <tr>
@@ -80,13 +72,12 @@ async function loadDashboard() {
             <td>${doc.project}</td>
             <td>${doc.title}</td>
             <td>${doc.status}</td>
-           <td>${formattedDate}</td>
+            <td>${formattedDate}</td>
         </tr>
         `;
-
     });
 
-    // Totals
+    // ✅ Totals
     document.getElementById("totalProjects").textContent = projectFiles.length;
     document.getElementById("totalDocuments").textContent = allDocs.length;
 
@@ -111,9 +102,10 @@ async function loadDashboard() {
     document.getElementById("superseded").textContent =
         allDocs.filter(d => d.status === "Superseded").length;
 
+    // Placeholder for due dates
     document.getElementById("dueThisWeek").textContent = 0;
-
     document.getElementById("overdue").textContent = 0;
+}
 
-    }
-    loadDashboard();
+// ✅ Call the function
+loadDashboard();
