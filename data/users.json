@@ -32,9 +32,27 @@
     ],
     "active": true
   },
-
   {
     "id": 3,
+    "username": "tyrone",
+    "password": "Manager123",
+    "name": "Tyrone",
+    "position": "Manager",
+    "email": "tyronedhantomalon@devexinc.com",
+    "role": "Document Control Manager",
+    "projects": [
+      "government-center",
+      "medical-center",
+      "school-cluster3",
+      "22-storey-multipurpose-building",
+      "evacuation-center",
+      "crematorium"
+    ],
+    "active": true
+  },
+
+  {
+    "id": 4,
     "username": "wta",
     "password": "123456",
     "name": "WTA",
