@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Projects</title>
 
 <style>
@@ -41,6 +42,10 @@ header{
     color:#2563eb;
 }
 
+.card p{
+    color:#475569;
+}
+
 .button{
     display:inline-block;
     margin-top:15px;
@@ -55,6 +60,14 @@ header{
     background:#1d4ed8;
 }
 
+.message{
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    text-align:center;
+    color:#64748b;
+}
+
 </style>
 
 </head>
@@ -67,63 +80,15 @@ header{
 
 </header>
 
-<div class="header-right">
-        <button id="logoutBtn">🚪 Logout</button>
-    </div>
-
-</div>    
-
 <div class="container">
 
-<div class="grid">
-
-<div class="card">
-<h2>🏢 Government Center</h2>
-<p>San Juan City Government Center Project</p>
-<a class="button" href="documents.html?project=government-center">
-    Government Center</a>
-</div>
-
-<div class="card">
-<h2>🏫 School Cluster 3</h2>
-<p>Schools Cluster Construction</p>
-<a class="button" href="documents.html?project=school-cluster3">
-    School Cluster 3</a>
-</div>
-
-<div class="card">
-<h2>🏢 22-Storey Multipurpose Building</h2>
-<p>Housing Building Project</p>
-<a class="button" href="documents.html?project=22-storey-multipurpose-building">
-    22-storey multipurpose building</a>
-</div>
-
-<div class="card">
-<h2>🏥 Medical Center</h2>
-<p>DOH-HFEP Project</p>
-<a class="button" href="documents.html?project=medical-center">
-    Medical Center</a>
-</div>
-
-<div class="card">
-<h2>🏠 Evacuation Center</h2>
-<p>San Juan Evacuation Center Project</p>
-<a class="button" href="documents.html?project=evacuation-center">
-    Evacuation Center</a>
-</div>
-
-<div class="card">
-<h2>🏠 Crematorium</h2>
-<p>San Juan Crematorium Project</p>
-<a class="button" href="documents.html?project=crematorium">
-    Crematorium</a>    
-</div>
+    <div id="projectsGrid" class="grid">
+        <!-- Projects will be loaded by projects.js -->
+    </div>
 
 </div>
 
-</div>
+<script src="js/projects.js"></script>
 
-<script src="js/dashboard.js"></script>
-    
 </body>
 </html>
