@@ -1,4 +1,10 @@
 [
+     {
+        "id": "22-storey-multipurpose-building",
+        "name": "Multipurpose Building",
+        "description": "Housing Project",
+        "icon": "🏢"
+    },
     {
         "id": "government-center",
         "name": "Government Center",
