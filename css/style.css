@@ -1,32 +1,53 @@
-/* ===========================
-   DOCUMENT TABLE
-=========================== */
+/* ==========================================
+   Document Register Table
+========================================== */
 
-table{
-    width:100%;
-    border-collapse:collapse;
-    background:#fff;
-    box-shadow:0 4px 15px rgba(0,0,0,.08);
-    border-radius:10px;
-    overflow:hidden;
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-top: 15px;
 }
 
-th{
-    background:#1e3a8a;
-    color:white;
-    padding:14px;
-    text-align:left;
-    font-size:14px;
+#docTable {
+    width: max-content;
+    min-width: 1400px;
+    border-collapse: collapse;
 }
 
-td{
-    padding:12px;
-    border-bottom:1px solid #e5e7eb;
-    font-size:14px;
-    vertical-align:top;
+#docTable th,
+#docTable td {
+    padding: 12px 14px;
+    text-align: left;
+    vertical-align: middle;
+}
 
-    word-wrap:break-word;
-    overflow-wrap:break-word;
+#docTable th {
+    white-space: nowrap;
+}
+
+#docTable td {
+    white-space: nowrap;
+}
+
+#docTable th:nth-child(4),
+#docTable td:nth-child(4) {
+    min-width: 350px;
+    white-space: normal;
+}
+
+#docTable th:nth-child(6),
+#docTable td:nth-child(6) {
+    min-width: 160px;
+    white-space: normal;
+}
+
+#docTable tr {
+    border-bottom: 1px solid #e5e7eb;
+}
+
+#docTable tbody tr:hover {
+    background: #f8fafc;
 }
 
 tbody tr:hover{
