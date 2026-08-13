@@ -491,6 +491,34 @@ function displayDocuments(list) {
                 </td>
 
                 <td>
+                    ${doc.dueDate || ""}
+                </td>
+
+                <td>
+                    ${doc.ballInCourt || ""}
+                </td>
+
+                <td>
+                    ${doc.activityId || ""}
+                </td>
+
+                <td>
+                    ${doc.ativityName || ""}
+                </td>
+
+                <td>
+                    ${doc.fileId || ""}
+                </td>
+
+                <td>
+                    ${doc.fileName || ""}
+                </td>
+
+                <td>
+                    ${doc.uploadedBy || ""}
+                </td>
+
+                <td>
                     ${fileCell}
                 </td>
 
