@@ -18,22 +18,22 @@ const users = [
         role: "Administrator"
     },
     {
-        username: "jon",
+        username: "tyrone",
         password: "12345",
-        fullname: "Jon Alex",
-        role: "Operations Manager"
+        fullname: "Tyrone Dhan",
+        role: "Documentation Manager"
     },
     {
-        username: "john",
-        password: "12345",
-        fullname: "John Paul",
+        username: "Jon Morcon",
+        password: "00000",
+        fullname: "Jon Morcon",
         role: "Document Controller"
     },
     {
-        username: "Ken",
-        password: "12345",
-        fullname: "Kenneth Navarro",
-        role: "QAQC Engineer"
+        username: "Dan Franco",
+        password: "Sep20",
+        fullname: "Dan Franco",
+        role: "VP"
     }
 ];
 
