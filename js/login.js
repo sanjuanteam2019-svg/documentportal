@@ -18,16 +18,22 @@ const users = [
         role: "Administrator"
     },
     {
-        username: "tyrone",
-        password: "Manager123",
-        fullname: "Tyrone",
-        role: "Administrator"
+        username: "jon",
+        password: "12345",
+        fullname: "Jon Alex",
+        role: "Operations Manager"
     },
     {
         username: "john",
         password: "12345",
         fullname: "John Paul",
         role: "Document Controller"
+    },
+    {
+        username: "Ken",
+        password: "12345",
+        fullname: "Kenneth Navarro",
+        role: "QAQC Engineer"
     }
 ];
 
@@ -47,7 +53,7 @@ loginForm.addEventListener("submit", function (e) {
         const password = document.getElementById("password").value;
 
         const user = users.find(u =>
-            u.username === username &&
+            u.username.toLowerCase() === username.toLowerCase() &&
             u.password === password
         );
 
